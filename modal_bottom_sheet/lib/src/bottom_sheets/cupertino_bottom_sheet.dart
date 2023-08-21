@@ -342,12 +342,18 @@ class _CupertinoModalTransition extends StatelessWidget {
           ),
         );
 
-        /// shape != null
-        /// ClipPath.shape(
-        /// clipBehavior: clip,
-        /// shape: shape!,
-        /// child: content,
-        /// )
+        Widget clipContainer = shape == null
+            ? ClipRRect(
+                clipBehavior: clip,
+                borderRadius: BorderRadius.circular(radius),
+                child: content,
+              )
+            : ClipPath.shape(
+                clipBehavior: clip,
+                shape: shape!,
+                child: content,
+              );
+
         return Stack(
           children: <Widget>[
             Container(color: backgroundColor),
@@ -356,11 +362,7 @@ class _CupertinoModalTransition extends StatelessWidget {
               child: Transform.scale(
                 scale: scale,
                 alignment: Alignment.topCenter,
-                child: ClipRRect(
-                  clipBehavior: clip,
-                  borderRadius: BorderRadius.circular(radius),
-                  child: content,
-                ),
+                child: clipContainer,
               ),
             ),
           ],
