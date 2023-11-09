@@ -22,8 +22,7 @@ import 'package:flutter/material.dart'
         debugCheckHasMaterialLocalizations;
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-
-import '../../modal_bottom_sheet.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 const double _kPreviousPageVisibleOffset = 10;
 
@@ -54,7 +53,6 @@ class _CupertinoBottomSheetContainer extends StatelessWidget {
   final bool? expand;
 
   const _CupertinoBottomSheetContainer({
-    Key? key,
     required this.child,
     this.backgroundColor,
     required this.topRadius,
@@ -63,8 +61,7 @@ class _CupertinoBottomSheetContainer extends StatelessWidget {
     this.shadow,
     this.overlayStyle,
     this.expand,
-  })  : clip = clip ?? Clip.antiAlias,
-        super(key: key);
+  }) : clip = clip ?? Clip.antiAlias;
 
   @override
   Widget build(BuildContext context) {
@@ -199,45 +196,29 @@ class CupertinoModalBottomSheetRoute<T> extends ModalSheetRoute<T> {
   final SystemUiOverlayStyle? overlayStyle;
 
   CupertinoModalBottomSheetRoute({
-    required WidgetBuilder builder,
-    WidgetWithChildBuilder? containerBuilder,
-    double? closeProgressThreshold,
-    String? barrierLabel,
+    required super.builder,
+    super.containerBuilder,
+    super.closeProgressThreshold,
+    super.barrierLabel,
     double? elevation,
     this.shape,
     Clip? clipBehavior,
-    AnimationController? secondAnimationController,
-    Curve? animationCurve,
-    Color? modalBarrierColor,
-    bool bounce = true,
-    bool isDismissible = true,
-    bool enableDrag = true,
-    required bool expanded,
-    Duration? duration,
-    RouteSettings? settings,
-    ScrollController? scrollController,
+    super.secondAnimationController,
+    super.animationCurve,
+    super.modalBarrierColor,
+    super.bounce = true,
+    super.isDismissible,
+    super.enableDrag,
+    required super.expanded,
+    super.duration,
+    super.settings,
+    super.scrollController,
     this.boxShadow = _kDefaultBoxShadow,
     this.transitionBackgroundColor,
     this.topRadius = _kDefaultTopRadius,
     this.previousRouteAnimationCurve,
     this.overlayStyle,
-  })  : clipBehavior = clipBehavior ?? Clip.antiAlias,
-        super(
-          closeProgressThreshold: closeProgressThreshold,
-          scrollController: scrollController,
-          containerBuilder: containerBuilder,
-          builder: builder,
-          bounce: bounce,
-          barrierLabel: barrierLabel,
-          secondAnimationController: secondAnimationController,
-          modalBarrierColor: modalBarrierColor,
-          isDismissible: isDismissible,
-          enableDrag: enableDrag,
-          expanded: expanded,
-          settings: settings,
-          animationCurve: animationCurve,
-          duration: duration,
-        );
+  }) : clipBehavior = clipBehavior ?? Clip.antiAlias;
 
   @override
   Widget buildTransitions(
@@ -292,7 +273,6 @@ class _CupertinoModalTransition extends StatelessWidget {
   final Widget body;
 
   const _CupertinoModalTransition({
-    Key? key,
     required this.secondaryAnimation,
     required this.body,
     required this.topRadius,
@@ -301,8 +281,7 @@ class _CupertinoModalTransition extends StatelessWidget {
     this.backgroundColor = Colors.black,
     this.animationCurve,
     // this.overlayStyle,
-  })  : clip = clip ?? Clip.antiAlias,
-        super(key: key);
+  }) : clip = clip ?? Clip.antiAlias;
 
   @override
   Widget build(BuildContext context) {
@@ -476,15 +455,14 @@ class CupertinoScaffold extends StatefulWidget {
   final SystemUiOverlayStyle? overlayStyle;
 
   const CupertinoScaffold({
-    Key? key,
+    super.key,
     required this.body,
     this.topRadius = _kDefaultTopRadius,
     this.shape,
     this.transitionBackgroundColor = Colors.black,
     this.overlayStyle,
     Clip? clipBehavior,
-  })  : clipBehavior = clipBehavior ?? Clip.antiAlias,
-        super(key: key);
+  }) : clipBehavior = clipBehavior ?? Clip.antiAlias;
 
   @override
   State<StatefulWidget> createState() => _CupertinoScaffoldState();

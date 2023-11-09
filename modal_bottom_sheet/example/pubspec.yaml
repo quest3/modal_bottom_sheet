@@ -19,12 +19,12 @@ environment:
 
 
 dependencies:
-  cupertino_icons: ^1.0.5
+  cupertino_icons: ^1.0.6
   flutter:
     sdk: flutter
   modal_bottom_sheet:
     path: '../'
-  url_launcher: ^6.1.5
+  url_launcher: ^6.2.1
 
 dev_dependencies:
   flutter_test:

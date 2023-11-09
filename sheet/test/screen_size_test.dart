@@ -10,8 +10,7 @@ const Rect kScreenRect = Rect.fromLTRB(0, 0, kScreenWidth, kScreenHeight);
 void main() {
   testWidgets('defaultTestSize', (WidgetTester tester) async {
     final Size testSize =
-        tester.binding.platformDispatcher.views.first.physicalSize /
-            tester.binding.platformDispatcher.views.first.devicePixelRatio;
+        tester.view.physicalSize / tester.view.devicePixelRatio;
     expect(testSize, equals(kScreenSize));
   });
 }
