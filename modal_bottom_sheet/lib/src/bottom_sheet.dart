@@ -372,8 +372,9 @@ class ModalBottomSheetState extends State<ModalBottomSheet>
       animation: widget.animationController,
       builder: (context, Widget? child) {
         assert(child != null);
-        final animationValue =
-            animationCurve.transform(widget.animationController.value);
+        final animationValue = animationCurve.transform(
+          widget.animationController.value,
+        );
 
         final draggableChild = !widget.enableDrag
             ? child

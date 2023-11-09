@@ -141,7 +141,6 @@ Future<T?> showCupertinoModalBottomSheet<T>({
   final barrierLabel = hasMaterialLocalizations
       ? MaterialLocalizations.of(context).modalBarrierDismissLabel
       : '';
-
   final result =
       await Navigator.of(context, rootNavigator: useRootNavigator).push(
     CupertinoModalBottomSheetRoute<T>(
@@ -150,9 +149,9 @@ Future<T?> showCupertinoModalBottomSheet<T>({
         child: child,
         backgroundColor: backgroundColor,
         topRadius: topRadius,
-        shape: shape,
         shadow: shadow,
         overlayStyle: overlayStyle,
+        shape: shape,
         expand: expand,
       ),
       secondAnimationController: secondAnimation,
