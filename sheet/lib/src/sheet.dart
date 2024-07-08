@@ -5,7 +5,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:sheet/src/widgets/resizable_sheet.dart';
-import 'package:sheet/src/widgets/scroll_to_top_status_handler.dart';
+import 'package:sheet/src/widgets/status_bar_gesture_detector.dart';
 
 import '../sheet.dart';
 
@@ -262,7 +262,7 @@ class Sheet extends StatelessWidget {
       scrollBehavior: SheetBehavior(),
       viewportBuilder: (BuildContext context, ViewportOffset offset) {
         return _DefaultSheetScrollController(
-          child: ScrollToTopStatusBarHandler(
+          child: StatusBarGestureDetector.scrollToTop(
             child: SheetViewport(
               clipBehavior: Clip.antiAlias,
               axisDirection: AxisDirection.down,
@@ -318,7 +318,11 @@ class _DefaultSheetScrollController extends StatelessWidget {
 ///  * [SheetPosition], which manages the positioning logic for
 ///    this controller.
 class SheetController extends ScrollController {
-  SheetController({super.debugLabel}) : super(initialScrollOffset: 0);
+  SheetController({
+    super.debugLabel,
+    super.onAttach,
+    super.onDetach,
+  }) : super(initialScrollOffset: 0);
 
   final ProxyAnimation _animation = ProxyAnimation();
   Animation<double> get animation => _animation;
@@ -894,8 +898,8 @@ class RenderSheetViewport extends RenderBox
   RevealedOffset getOffsetToReveal(
     RenderObject target,
     double alignment, {
-    Rect? rect,
     Axis? axis,
+    Rect? rect,
   }) {
     rect ??= target.paintBounds;
     if (target is! RenderBox) {

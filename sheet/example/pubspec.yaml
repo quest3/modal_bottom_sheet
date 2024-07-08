@@ -4,12 +4,13 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+    sdk: ">=3.19.0 <4.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   equatable: ^2.0.5
+  collection:
   cupertino_icons: ^1.0.6
   provider: ^6.1.0
   sheet:
@@ -19,6 +20,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  lints: ^3.0.0
 
 flutter:
   uses-material-design: true
